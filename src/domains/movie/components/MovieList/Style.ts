@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  position: fixed;
+const Container = styled.ul`
   display: flex;
-  width: 40rem;
+  flex-direction: column;
+  gap: 1rem;
   padding: 1.6rem;
-  background-color: ${({ theme }) => theme.colors.black};
+  padding-top: 8rem;
+  height: 100vh;
+  overflow-y: scroll;
 `;
 
 const S = {

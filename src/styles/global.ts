@@ -1,17 +1,24 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  font-size: 62.5%;
+  ::-webkit-scrollbar {
+    width: 0; 
+    background: transparent;
+  }
   *,*::after,*::before{
     box-sizing: border-box;
   }
   html {
     height: 100%;
+    font-size: 62.5%;
   }
   body {
     display: flex;
     height: 100%;
     flex-direction: column;
+    background-color: ${({ theme }) => theme.colors.primary};
+    font-size: 1.6rem;
+    overflow: hidden;
   };
   #root {
     flex: 1;
