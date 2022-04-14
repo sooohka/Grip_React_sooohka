@@ -14,8 +14,10 @@ const Container = styled.li`
 `;
 
 const Img = styled.img`
-  height: 12rem;
-  width: 12rem;
+  min-width: 12rem;
+  min-height: 12rem;
+  max-height: 12rem;
+  max-width: 12rem;
   object-fit: fill;
 `;
 

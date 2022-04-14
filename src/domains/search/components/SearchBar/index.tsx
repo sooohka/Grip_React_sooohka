@@ -5,10 +5,13 @@ import S from "./Style";
 
 function SearchBar() {
   return (
-    <S.Container>
-      <SearchInput />
-      <Button variant="outlined">검색</Button>
-    </S.Container>
+    <>
+      <S.Container>
+        <SearchInput />
+        <Button variant="outlined">검색</Button>
+      </S.Container>
+      <S.Block />
+    </>
   );
 }
 
