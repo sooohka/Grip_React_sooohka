@@ -1,12 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-
-const S = styled.div(({ theme }) => ({
-  background: theme.colors.primary,
-}));
+import SearchBar from "./domains/search/components/SearchBar";
 
 function App() {
-  return <S>hi</S>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 }
 
 export default App;

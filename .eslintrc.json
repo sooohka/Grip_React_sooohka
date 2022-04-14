@@ -16,6 +16,8 @@
     "@typescript-eslint/no-unused-vars": "warn",
     "react/jsx-props-no-spreading": "off",
     "prettier/prettier": "warn",
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
     "react/prop-types": "off"
   }
 }
