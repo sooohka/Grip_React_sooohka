@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "react-app/jest",
+    "prettier",
+    "plugin:testing-library/react"
+  ],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": { "jsx": true },
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "prettier/prettier": "warn",
+    "react/prop-types": "off"
+  }
+}
