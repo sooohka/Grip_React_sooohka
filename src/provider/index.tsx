@@ -1,4 +1,5 @@
-import React, { StrictMode } from "react";
+import React from "react";
+import ReduxProvider from "./Redux";
 import Style from "./Style";
 
 type Props = {
@@ -7,9 +8,9 @@ type Props = {
 
 function AppProvider({ children }: Props) {
   return (
-    <StrictMode>
+    <ReduxProvider>
       <Style>{children}</Style>
-    </StrictMode>
+    </ReduxProvider>
   );
 }
 

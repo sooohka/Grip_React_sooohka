@@ -7,8 +7,9 @@ type Props = {
 };
 function MovieListItem(props: Props) {
   const {
-    movie: { poster, title, type, year, imdbID },
+    movie: { poster, title, type, year },
   } = props;
+
   return (
     <S.Container>
       <S.Img src={poster} alt={title} />

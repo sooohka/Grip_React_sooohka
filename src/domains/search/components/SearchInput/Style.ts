@@ -26,21 +26,21 @@ const Input = styled.input`
 
 const SearchIcon = styled(HiSearchIcon)`
   color: ${({ theme }) => theme.colors.gray[600]};
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 2rem;
+  height: 2rem;
   margin-right: 7px;
 `;
 
 const XCircleIcon = styled(HiXCircleIcon)`
   color: ${({ theme }) => theme.colors.gray[400]};
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 2rem;
+  height: 2rem;
 `;
 
 const Button = styled.button`
   all: unset;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
 `;
 
