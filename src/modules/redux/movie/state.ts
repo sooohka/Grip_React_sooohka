@@ -1,18 +1,19 @@
-import { Movie } from "../../../domains/movie/types";
+import { Movie } from "../../../domains/search/types";
 
 type MovieReducerState = {
   movies: Movie[];
   isFetchingMovies: boolean;
   error: Error | null;
-  keyword: string;
+  totalResults: number;
   page: number;
 };
+
 const initialState: MovieReducerState = {
   movies: [],
   isFetchingMovies: false,
   error: null,
-  keyword: "",
   page: 1,
+  totalResults: 0,
 };
 
 export type { MovieReducerState };

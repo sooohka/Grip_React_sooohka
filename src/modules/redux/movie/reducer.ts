@@ -11,13 +11,17 @@ const movieReducer: Reducer<MovieReducerState, MovieAction> = (
       const { movies } = action.payload;
       return { ...state, movies: [...state.movies, ...movies] };
     }
-    case "movie/setKeyword": {
-      const { keyword } = action.payload;
-      return { ...state, keyword };
+    case "movie/clearMovies": {
+      return { ...state, movies: [], page: 1 };
     }
     case "movie/incrementPage": {
       return { ...state, page: state.page + 1 };
     }
+    case "movie/setTotalResults": {
+      const { totalResults } = action.payload;
+      return { ...state, totalResults };
+    }
+
     case "movie/fetchingStart": {
       return { ...state, isFetchingMovies: true };
     }

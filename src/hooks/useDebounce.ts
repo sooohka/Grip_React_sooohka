@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 
-function useDebounce(callback: Function, deps: any[], time = 200) {
+/**
+ * callback 바뀔떄마다 fire!
+ */
+function useDebounce(callback: Function, time = 400) {
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      callback();
-    }, time);
+    const timeoutId = setTimeout(callback, time);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, deps);
+  }, [callback, time]);
 }
 
 export default useDebounce;

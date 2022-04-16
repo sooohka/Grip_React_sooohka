@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
+/**
+ * 마운트 전에 true
+ * 마운트 후에 false 리턴
+ * @returns {boolean}
+ */
 function useMount() {
-  const [isMount, setIsMount] = useState(true);
+  const ref = useRef(true);
 
   useEffect(() => {
-    setIsMount(false);
+    ref.current = false;
+    return () => {
+      ref.current = true;
+    };
   }, []);
 
-  return { isMount };
+  return ref.current;
 }
 
 export default useMount;

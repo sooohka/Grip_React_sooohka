@@ -4,6 +4,7 @@ import {
   fetchMoviesFail,
   fetchMoviesStart,
   fetchMoviesSuccess,
+  setTotalResults,
 } from "../actions";
 import fetchMoviesThunk from "../thunk";
 
@@ -53,17 +54,18 @@ describe("test thunks", () => {
       imdbID: "tt0837143",
     };
     fetcher = jest.fn(() =>
-      Promise.resolve({ data: { movies: [movie] } })
+      Promise.resolve({ data: { movies: [movie], totalResults: 1 } })
     ) as any;
     const { invoke, store } = fakeStore;
 
     invoke(fetchMoviesThunk(fetcher));
 
     await jest.fn();
-    expect(store.dispatch).toBeCalledTimes(3);
+    expect(store.dispatch).toBeCalledTimes(4);
     expect(fetcher).toBeCalledTimes(1);
     expect(store.dispatch).toBeCalledWith(fetchMoviesStart());
     expect(store.dispatch).toBeCalledWith(addMovies([movie]));
+    expect(store.dispatch).toBeCalledWith(setTotalResults(1));
     expect(store.dispatch).toBeCalledWith(fetchMoviesSuccess());
   });
 

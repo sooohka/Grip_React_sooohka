@@ -1,12 +1,13 @@
-import { Movie } from "../../../domains/movie/types";
+import { Movie } from "../../../domains/search/types";
 
 const ACTIONS = {
   ADD_MOVIES: "movie/addMovies" as const,
+  CLEAR_MOVIES: "movie/clearMovies" as const,
+  SET_TOTAL_RESULTS: "movie/setTotalResults" as const,
+  INCREMENT_PAGE: "movie/incrementPage" as const,
   FETCHING_MOVIES_START: "movie/fetchingStart" as const,
   FETCHING_MOVIES_SUCCESS: "movie/fetchingSuccess" as const,
   FETCHING_MOVIES_FAIL: "movie/fetchingFail" as const,
-  SET_KEYWORD: "movie/setKeyword" as const,
-  INCREMENT_PAGE: "movie/incrementPage" as const,
 };
 
 const addMovies = (movies: Movie[]) => ({
@@ -14,9 +15,13 @@ const addMovies = (movies: Movie[]) => ({
   payload: { movies },
 });
 
-const setKeyword = (keyword: string) => ({
-  type: ACTIONS.SET_KEYWORD,
-  payload: { keyword },
+const clearMovies = () => ({
+  type: ACTIONS.CLEAR_MOVIES,
+});
+
+const setTotalResults = (totalResults: number) => ({
+  type: ACTIONS.SET_TOTAL_RESULTS,
+  payload: { totalResults },
 });
 
 const incrementPage = () => ({
@@ -32,15 +37,17 @@ const fetchMoviesFail = (err: Error) => ({
 
 type MovieAction =
   | ReturnType<typeof addMovies>
+  | ReturnType<typeof clearMovies>
+  | ReturnType<typeof incrementPage>
+  | ReturnType<typeof setTotalResults>
   | ReturnType<typeof fetchMoviesStart>
   | ReturnType<typeof fetchMoviesSuccess>
-  | ReturnType<typeof fetchMoviesFail>
-  | ReturnType<typeof setKeyword>
-  | ReturnType<typeof incrementPage>;
+  | ReturnType<typeof fetchMoviesFail>;
 
 export {
   addMovies,
-  setKeyword,
+  clearMovies,
+  setTotalResults,
   incrementPage,
   fetchMoviesFail,
   fetchMoviesStart,

@@ -6,6 +6,7 @@ import {
   addMovies,
   fetchMoviesFail,
   fetchMoviesSuccess,
+  setTotalResults,
 } from "./actions";
 import { MovieReducerState } from "./state";
 
@@ -17,7 +18,9 @@ const fetchMoviesThunk: FetchMoviesThunk = (fetcher) => async (dispatch) => {
   dispatch(fetchMoviesStart());
   try {
     const { data } = await fetcher();
-    dispatch(addMovies(data.movies));
+    const { movies, totalResults } = data;
+    dispatch(addMovies(movies));
+    dispatch(setTotalResults(Number(totalResults)));
     dispatch(fetchMoviesSuccess());
   } catch (err) {
     dispatch(fetchMoviesFail(err as Error));

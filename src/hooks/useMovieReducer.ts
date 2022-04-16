@@ -1,30 +1,20 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Movie } from "../domains/movie/types";
 import getMoviesBySearchParam from "../domains/search/api/getMoviesBySearchParam";
 import * as actions from "../modules/redux/movie/actions";
 import fetchMoviesThunk from "../modules/redux/movie/thunk";
 import { RootState } from "../modules/redux/store";
 
 function useMovieReducer() {
-  const { error, isFetchingMovies, movies, keyword, page } = useSelector(
+  const { error, isFetchingMovies, movies, page, totalResults } = useSelector(
     (state: RootState) => state.movieReducer
   );
+
   const dispatch = useDispatch();
 
-  const addMovies = useCallback(
-    (_movies: Movie[]) => {
-      dispatch(actions.addMovies(_movies));
-    },
-    [dispatch]
-  );
-
-  const setKeyword = useCallback(
-    (_keyword: string) => {
-      dispatch(actions.setKeyword(_keyword));
-    },
-    [dispatch]
-  );
+  const clearMovies = useCallback(() => {
+    dispatch(actions.clearMovies());
+  }, [dispatch]);
 
   const incrementPage = useCallback(() => {
     dispatch(actions.incrementPage());
@@ -39,12 +29,11 @@ function useMovieReducer() {
 
   return {
     isFetchingMovies,
+    totalResults,
     movies,
-    keyword,
     page,
-    addMovies,
+    clearMovies,
     incrementPage,
-    setKeyword,
     fetchMovies,
     error,
   };

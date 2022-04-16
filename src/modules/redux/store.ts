@@ -1,13 +1,14 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
+import { composeWithDevTools } from "@redux-devtools/extension";
 import movieReducer from "./movie/reducer";
 
 const reduxStore = createStore(
   combineReducers({
     movieReducer,
   }),
-  applyMiddleware(thunk, logger)
+  composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
 type RootState = ReturnType<typeof reduxStore.getState>;
