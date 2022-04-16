@@ -5,6 +5,7 @@ import S from "./Style";
 type Props = {
   movie: Movie;
 };
+
 function MovieListItem(props: Props) {
   const {
     movie: { poster, title, type, year },

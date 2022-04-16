@@ -7,26 +7,47 @@ import fetchMoviesThunk from "../modules/redux/movie/thunk";
 import { RootState } from "../modules/redux/store";
 
 function useMovieReducer() {
-  const { error, isFetchingMovies, movies } = useSelector(
+  const { error, isFetchingMovies, movies, keyword, page } = useSelector(
     (state: RootState) => state.movieReducer
   );
   const dispatch = useDispatch();
 
   const addMovies = useCallback(
     (_movies: Movie[]) => {
-      actions.addMovies(_movies);
+      dispatch(actions.addMovies(_movies));
     },
     [dispatch]
   );
+
+  const setKeyword = useCallback(
+    (_keyword: string) => {
+      dispatch(actions.setKeyword(_keyword));
+    },
+    [dispatch]
+  );
+
+  const incrementPage = useCallback(() => {
+    dispatch(actions.incrementPage());
+  }, [dispatch]);
 
   const fetchMovies = useCallback(
     (fetcher: () => ReturnType<typeof getMoviesBySearchParam>) => {
-      fetchMoviesThunk(fetcher);
+      dispatch(fetchMoviesThunk(fetcher));
     },
     [dispatch]
   );
 
-  return { isFetchingMovies, movies, addMovies, fetchMovies, error };
+  return {
+    isFetchingMovies,
+    movies,
+    keyword,
+    page,
+    addMovies,
+    incrementPage,
+    setKeyword,
+    fetchMovies,
+    error,
+  };
 }
 
 export default useMovieReducer;

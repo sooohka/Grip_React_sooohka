@@ -2,12 +2,28 @@ import React from "react";
 import S from "./Style";
 import XCircleButton from "./XCircleButton";
 
-function SearchInput() {
+type Props = {
+  inputValue: string;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleXCircleButtonClick: () => void;
+};
+function SearchInput(props: Props) {
+  const { inputValue, handleInputChange, handleXCircleButtonClick } = props;
+
   return (
     <S.Container>
       <S.SearchIcon />
-      <S.Input placeholder="검색" />
-      <XCircleButton />
+      <S.Input
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="검색"
+      />
+      <XCircleButton
+        type="reset"
+        onClick={handleXCircleButtonClick}
+        onTouchEnd={handleXCircleButtonClick}
+        hidden={Boolean(inputValue) === false}
+      />
     </S.Container>
   );
 }

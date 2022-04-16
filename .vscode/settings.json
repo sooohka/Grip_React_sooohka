@@ -6,7 +6,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "js/ts.implicitProjectConfig.checkJs": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
   "typescript.validate.enable": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.enumMemberValues.enabled": true,

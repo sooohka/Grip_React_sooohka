@@ -1,8 +1,8 @@
 import { Reducer } from "redux";
 import { MovieAction } from "./actions";
-import initialState, { MovieState } from "./state";
+import initialState, { MovieReducerState } from "./state";
 
-const movieReducer: Reducer<MovieState, MovieAction> = (
+const movieReducer: Reducer<MovieReducerState, MovieAction> = (
   state = initialState,
   action
 ) => {
@@ -10,6 +10,13 @@ const movieReducer: Reducer<MovieState, MovieAction> = (
     case "movie/addMovies": {
       const { movies } = action.payload;
       return { ...state, movies: [...state.movies, ...movies] };
+    }
+    case "movie/setKeyword": {
+      const { keyword } = action.payload;
+      return { ...state, keyword };
+    }
+    case "movie/incrementPage": {
+      return { ...state, page: state.page + 1 };
     }
     case "movie/fetchingStart": {
       return { ...state, isFetchingMovies: true };
@@ -27,5 +34,5 @@ const movieReducer: Reducer<MovieState, MovieAction> = (
   }
 };
 
-export type { MovieState, MovieAction };
+export type { MovieReducerState, MovieAction };
 export default movieReducer;

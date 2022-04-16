@@ -29,7 +29,7 @@ function parseMovieResponseDto(movies: ResponseDto["Search"] = []) {
 const movieInstance = Axios.create({
   baseURL: "https://www.omdbapi.com",
   params: {
-    apiKey: "92e32667xx",
+    apiKey: "92e32667",
   },
 });
 
@@ -44,8 +44,8 @@ movieInstance.interceptors.response.use(
   },
   (err) => {
     if (err.response) {
-      const { Error } = err.response.data;
-      return Promise.reject(new Error(Error));
+      const { data } = err.response;
+      return Promise.reject(new Error(data.Error));
     }
     if (err.message) {
       return Promise.reject(new Error(err.message));
