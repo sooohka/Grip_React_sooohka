@@ -1,11 +1,16 @@
 import React from "react";
 import Button from "../../../../components/Button";
-import useSearch from "../../hooks/useSearch";
+import useSearchForm from "../../hooks/useSearchForm";
 import SearchInput from "../SearchInput";
 import S from "./Style";
 
-function SearchBar() {
-  const { handleInputChange, handleSubmit, input, clearInput } = useSearch();
+type Props = {
+  query: string;
+};
+
+function SearchBar({ query }: Props) {
+  const { handleInputChange, handleSubmit, input, clearInput } =
+    useSearchForm(query);
   return (
     <>
       <S.Container>

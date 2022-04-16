@@ -1,39 +1,22 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import useDebounce from "../../../hooks/useDebounce";
-import useMount from "../../../hooks/useMount";
+import { useEffect, useMemo } from "react";
+import { useLocation } from "react-router-dom";
 import useMovieReducer from "../../../hooks/useMovieReducer";
 import getMoviesBySearchParam from "../api/getMoviesBySearchParam";
 
 function useSearch() {
-  const [input, setInput] = useState<string>("");
-  const { isMount } = useMount();
-  const { fetchMovies, setKeyword, keyword } = useMovieReducer();
+  const { search } = useLocation();
+  const { fetchMovies, clearMovies } = useMovieReducer();
 
-  useDebounce(() => {
-    if (isMount) {
+  const query = useMemo(() => new URLSearchParams(search).get("s"), [search]);
+
+  useEffect(() => {
+    if (!query) {
       return;
     }
-    setKeyword(input);
-  }, [input]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setInput(value);
-  };
-
-  useEffect(() => {}, [input]);
-
-  const clearInput = () => {
-    setInput("");
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    // TODO: set page
-    fetchMovies(() => getMoviesBySearchParam({ page: 1, s: keyword }));
-  };
-
-  return { input, handleInputChange, clearInput, handleSubmit };
+    clearMovies();
+    fetchMovies(() => getMoviesBySearchParam({ page: 1, s: query }));
+  }, [clearMovies, fetchMovies, query]);
+  return { query };
 }
 
 export default useSearch;

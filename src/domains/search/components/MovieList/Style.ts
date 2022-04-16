@@ -6,6 +6,7 @@ const MovieList = styled.ul`
   gap: 1rem;
   padding: 1.6rem;
   height: 100vh;
+  padding-bottom: 10rem;
   overflow-y: scroll;
 `;
 

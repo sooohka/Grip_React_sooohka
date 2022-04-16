@@ -1,5 +1,6 @@
 import React from "react";
 import ReduxProvider from "./Redux";
+import Router from "./Router";
 import Style from "./Style";
 
 type Props = {
@@ -8,9 +9,11 @@ type Props = {
 
 function AppProvider({ children }: Props) {
   return (
-    <ReduxProvider>
-      <Style>{children}</Style>
-    </ReduxProvider>
+    <Router>
+      <ReduxProvider>
+        <Style>{children}</Style>
+      </ReduxProvider>
+    </Router>
   );
 }
 

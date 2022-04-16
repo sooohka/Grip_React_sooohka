@@ -1,6 +1,7 @@
 import React from "react";
-import MovieList from "./domains/movie/components/MovieList";
+import MovieList from "./domains/search/components/MovieList";
 import SearchBar from "./domains/search/components/SearchBar";
+import Routes from "./routes";
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
         background: "black",
       }}
     >
-      <SearchBar />
-      <MovieList />
+      <Routes />
     </div>
   );
 }

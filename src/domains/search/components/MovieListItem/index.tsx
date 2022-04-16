@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Movie } from "../../types";
 import S from "./Style";
 
@@ -6,13 +6,13 @@ type Props = {
   movie: Movie;
 };
 
-function MovieListItem(props: Props) {
+const MovieListItem = forwardRef<HTMLLIElement, Props>((props, ref) => {
   const {
     movie: { poster, title, type, year },
   } = props;
 
   return (
-    <S.Container>
+    <S.Container ref={ref}>
       <S.Img src={poster} alt={title} />
       <S.InfoBox>
         <S.Title>{title}</S.Title>
@@ -21,6 +21,6 @@ function MovieListItem(props: Props) {
       </S.InfoBox>
     </S.Container>
   );
-}
+});
 
 export default MovieListItem;

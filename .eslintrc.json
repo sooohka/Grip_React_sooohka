@@ -2,6 +2,7 @@
   "extends": [
     "airbnb",
     "airbnb-typescript",
+    "airbnb/hooks",
     "react-app/jest",
     "prettier",
     "plugin:testing-library/react"

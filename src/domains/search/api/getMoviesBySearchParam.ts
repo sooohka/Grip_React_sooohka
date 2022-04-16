@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import instances from "../../../modules/axios";
-import { Movie } from "../../movie/types";
+import { Movie } from "../types";
 
 const { movieInstance } = instances;
 
@@ -9,9 +9,11 @@ type Params = {
   page: number;
 };
 
+type GetMoviesBySearchParamResponse = { movies: Movie[]; totalResults: string };
+
 type GetMoviesBySearchParam = (
   params: Params
-) => Promise<AxiosResponse<{ movies: Movie[] }>>;
+) => Promise<AxiosResponse<GetMoviesBySearchParamResponse>>;
 
 const getMoviesBySearchParam: GetMoviesBySearchParam = (params) =>
   movieInstance.get("", { params });

@@ -35,12 +35,15 @@ const movieInstance = Axios.create({
 
 movieInstance.interceptors.response.use(
   (res: AxiosResponse<ResponseDto>) => {
-    if (res.data.Response === "False") {
-      return { ...res, data: { movies: [], error: res.data.Error } };
+    if (res.data.Error === "Movie not found!") {
+      return { ...res, data: { movies: [], totalResults: "0" } };
+    }
+    if (res.data.Error) {
+      return Promise.reject(new Error(res.data.Error));
     }
 
-    const movies = parseMovieResponseDto(res.data.Search);
-    return { ...res, data: { movies } };
+    const movies = parseMovieResponseDto(res.data.Search || []);
+    return { ...res, data: { movies, totalResults: res.data.totalResults } };
   },
   (err) => {
     if (err.response) {
