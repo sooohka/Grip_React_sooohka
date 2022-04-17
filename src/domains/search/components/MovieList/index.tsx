@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../../../../components/Spinner";
 import useMovies from "../../hooks/useMovies";
 import MovieListItem from "../MovieListItem";
 import S from "./Style";
@@ -8,18 +9,19 @@ type Props = {
 };
 
 function MovieList({ query }: Props) {
-  const { movies, error, target } = useMovies(query);
+  const { movies, error, target, isLoading } = useMovies(query);
 
   if (error) {
-    return <S.NoMovieBox>{error.message}</S.NoMovieBox>;
+    return <S.FeedBack>{error.message}</S.FeedBack>;
   }
 
   if (movies.length === 0) {
-    return <S.NoMovieBox>검색 결과가 없어요😭</S.NoMovieBox>;
+    return <S.FeedBack>검색 결과가 없어요😭</S.FeedBack>;
   }
 
   return (
     <S.MovieList>
+      {isLoading && <Spinner />}
       {movies.map((movie) => (
         <MovieListItem key={movie.imdbID} movie={movie} />
       ))}

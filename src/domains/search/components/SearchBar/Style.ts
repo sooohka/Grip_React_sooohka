@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;
-  width: 40rem;
+  width: ${({ theme }) => theme.size.app.width};
   height: 7rem;
   padding: 1.6rem;
   background-color: ${({ theme }) => theme.colors.black};
@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Block = styled.div`
-  width: 40rem;
+  width: ${({ theme }) => theme.size.app.width};
   height: 7rem;
 `;
 

@@ -10,7 +10,7 @@ const MovieList = styled.ul`
   overflow-y: scroll;
 `;
 
-const NoMovieBox = styled.div`
+const FeedBack = styled.div`
   height: 100vh;
   padding-top: 10rem;
   text-align: center;
@@ -20,7 +20,7 @@ const NoMovieBox = styled.div`
 
 const S = {
   MovieList,
-  NoMovieBox,
+  FeedBack,
 };
 
 export default S;

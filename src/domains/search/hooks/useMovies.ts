@@ -4,14 +4,20 @@ import getMoviesBySearchParam from "../api/getMoviesBySearchParam";
 
 function useMovies(query: string) {
   const target = useRef<any>(null);
-  const { error, movies } = useMovieReducer();
   const isMount = useRef(true);
 
-  const { fetchMovies, isFetchingMovies, page, incrementPage, totalResults } =
-    useMovieReducer();
+  const {
+    error,
+    movies,
+    fetchMovies,
+    isFetchingMovies,
+    page,
+    incrementPage,
+    totalResults,
+  } = useMovieReducer();
 
   const callback: IntersectionObserverCallback = useCallback(
-    (entries, observer) => {
+    (entries) => {
       const [currentTarget] = entries;
       const isDone = totalResults <= movies.length;
       if (currentTarget.isIntersecting && isDone === false) {
@@ -48,7 +54,7 @@ function useMovies(query: string) {
       isMount.current = true;
     };
   }, []);
-  return { movies, error, target };
+  return { movies, error, target, isLoading: isFetchingMovies };
 }
 
 export default useMovies;

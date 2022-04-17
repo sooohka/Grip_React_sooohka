@@ -19,5 +19,10 @@ const theme: DefaultTheme = {
     black: "#000000",
     white: "#ffffff",
   },
+  size: {
+    app: {
+      width: "40rem",
+    },
+  },
 };
 export default theme;

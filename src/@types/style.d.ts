@@ -20,5 +20,10 @@ declare module "styled-components" {
         "900": string;
       };
     };
+    size: {
+      app: {
+        width: string;
+      };
+    };
   }
 }
