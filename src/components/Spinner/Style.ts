@@ -6,6 +6,7 @@ const Spinner = styled(SpinnerSvg)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.7);
+  z-index: ${({ theme }) => theme.zIndex.modal};
 `;
 
 const Backdrop = styled.div`
@@ -18,7 +19,7 @@ const Backdrop = styled.div`
   bottom: 0;
   background-color: black;
   opacity: 0.7;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.backDrop};
 `;
 
 const S = { Spinner, Backdrop };

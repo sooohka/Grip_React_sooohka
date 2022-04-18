@@ -19,6 +19,7 @@ function SearchInput(props: Props) {
         placeholder="검색"
       />
       <XCircleButton
+        aria-label="reset input text"
         type="reset"
         onClick={handleXCircleButtonClick}
         onTouchEnd={handleXCircleButtonClick}

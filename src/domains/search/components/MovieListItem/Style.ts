@@ -11,6 +11,11 @@ const Container = styled.li`
     opacity: 0.5;
     color: ${({ theme }) => theme.colors.white};
   }
+  :focus-visible {
+    /*fire-fox */
+    outline: blue auto 2px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
 `;
 
 const Img = styled.img`
@@ -26,6 +31,7 @@ const InfoBox = styled.div`
   display: flex;
   gap: 2rem;
   flex-direction: column;
+  padding: 1rem 0;
 `;
 
 const Title = styled.h6``;

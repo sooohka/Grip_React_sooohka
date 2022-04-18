@@ -23,7 +23,20 @@ declare module "styled-components" {
     size: {
       app: {
         width: string;
+        height: string;
       };
+      modal: {
+        width: string;
+        height: string;
+      };
+      header: {
+        height: string;
+      };
+    };
+    zIndex: {
+      header: number;
+      backDrop: number;
+      modal: number;
     };
   }
 }

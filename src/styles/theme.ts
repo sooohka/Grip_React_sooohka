@@ -22,7 +22,20 @@ const theme: DefaultTheme = {
   size: {
     app: {
       width: "40rem",
+      height: "100vh",
     },
+    modal: {
+      width: "20rem",
+      height: "15rem",
+    },
+    header: {
+      height: "7rem",
+    },
+  },
+  zIndex: {
+    header: 10,
+    backDrop: 100,
+    modal: 150,
   },
 };
 export default theme;

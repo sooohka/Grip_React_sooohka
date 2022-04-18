@@ -8,6 +8,7 @@ const MovieList = styled.ul`
   height: 100vh;
   padding-bottom: 10rem;
   overflow-y: scroll;
+  padding-top: ${({ theme }) => theme.size.header.height};
 `;
 
 const FeedBack = styled.div`

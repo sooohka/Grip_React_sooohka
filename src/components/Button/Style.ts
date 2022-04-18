@@ -6,6 +6,11 @@ const Button = styled.button`
   outline: 0;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  :focus-visible {
+    /*fire-fox */
+    outline: blue auto 2px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
 `;
 
 const OutLinedButton = styled(Button)`

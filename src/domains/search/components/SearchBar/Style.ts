@@ -1,17 +1,12 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.header`
   position: fixed;
   width: ${({ theme }) => theme.size.app.width};
-  height: 7rem;
+  height: ${({ theme }) => theme.size.header.height};
   padding: 1.6rem;
   background-color: ${({ theme }) => theme.colors.black};
-  z-index: 10;
-`;
-
-const Block = styled.div`
-  width: ${({ theme }) => theme.size.app.width};
-  height: 7rem;
+  z-index: ${({ theme }) => theme.zIndex.header};
 `;
 
 const Form = styled.form`
@@ -22,7 +17,6 @@ const Form = styled.form`
 
 const S = {
   Container,
-  Block,
   Form,
 };
 

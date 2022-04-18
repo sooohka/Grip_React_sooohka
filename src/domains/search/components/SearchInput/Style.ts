@@ -42,6 +42,11 @@ const Button = styled.button`
   width: 2rem;
   height: 2rem;
   cursor: pointer;
+  :focus-visible {
+    /*fire-fox */
+    outline: blue auto 2px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
 `;
 
 const S = {
