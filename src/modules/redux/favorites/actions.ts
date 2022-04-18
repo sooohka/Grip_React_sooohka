@@ -1,17 +1,17 @@
 import { Movie } from "../../../domains/search/types";
 
 const ACTIONS = {
-  ADD_FAVORITE: "favorites/add" as const,
-  DELETE_FAVORITE: "favorites/delete" as const,
+  ADD_FAVORITES: "favorites/add" as const,
+  DELETE_FAVORITES: "favorites/delete" as const,
 };
 
 const addFavorite = (movie: Movie) => ({
-  type: ACTIONS.ADD_FAVORITE,
+  type: ACTIONS.ADD_FAVORITES,
   payload: { movie },
 });
 
 const deleteFavorite = (id: Movie["imdbID"]) => ({
-  type: ACTIONS.DELETE_FAVORITE,
+  type: ACTIONS.DELETE_FAVORITES,
   payload: { id },
 });
 

@@ -31,6 +31,7 @@ const movieReducer: Reducer<FavoritesReducerState, FavoritesAction> = (
       }
       return { ...state, favorites: filteredFavorites };
     }
+
     default: {
       return state;
     }
