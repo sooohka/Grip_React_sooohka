@@ -45,7 +45,6 @@ function useMovies(query: string) {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [callback]);
 
   useEffect(() => {

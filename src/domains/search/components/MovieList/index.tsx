@@ -14,7 +14,6 @@ function MovieList({ query }: Props) {
   const { movies, error, target, isLoading } = useMovies(query);
   const [currentMovie, setCurrentMovie] = useState<Movie>(movies[0]);
   const [isOpen, setIsOpen] = useState(false);
-
   const handleItemClick = (movie: Movie) => () => {
     setCurrentMovie(movie);
     setIsOpen(true);

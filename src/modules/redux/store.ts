@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import movieReducer from "./movie/reducer";
+import favoritesReducer from "./favorites/reducer";
 
 const reduxStore = createStore(
   combineReducers({
     movieReducer,
+    favoritesReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
