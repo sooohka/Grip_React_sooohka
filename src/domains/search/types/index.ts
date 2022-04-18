@@ -6,10 +6,6 @@ type Movie = {
   poster: string;
 };
 
-enum Type {
-  Game = "game",
-  Movie = "movie",
-  Series = "series",
-}
+type Type = "game" | "movie" | "series";
 
 export type { Movie, Type };

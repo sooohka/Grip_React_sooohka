@@ -1,22 +1,13 @@
-import { ChangeEvent, useCallback, useMemo, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useCallback, useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useMovieReducer from "../../../hooks/useMovieReducer";
 
-function useSearchForm(initInputValue: string) {
-  const [input, setInput] = useState<string>(initInputValue);
+function useMovieSearchForm(input: string) {
   const navigate = useNavigate();
   const { clearMovies } = useMovieReducer();
   const { pathname, search } = useLocation();
-  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setInput(value);
-  }, []);
 
   const currentPath = useMemo(() => pathname + search, [pathname, search]);
-
-  const clearInput = useCallback(() => {
-    setInput("");
-  }, []);
 
   const handleSubmit = useCallback(
     async (e: any) => {
@@ -30,7 +21,7 @@ function useSearchForm(initInputValue: string) {
     [clearMovies, currentPath, input, navigate]
   );
 
-  return { input, handleInputChange, clearInput, handleSubmit };
+  return { input, handleSubmit };
 }
 
-export default useSearchForm;
+export default useMovieSearchForm;

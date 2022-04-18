@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Movie } from "../../types";
+import { Movie } from "../../../domains/search/types";
 import S from "./Style";
 
 type Props = {

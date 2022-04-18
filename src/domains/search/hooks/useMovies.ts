@@ -1,22 +1,13 @@
 import { useCallback, useEffect, useRef } from "react";
 import useMovieReducer from "../../../hooks/useMovieReducer";
-import getMoviesBySearchParam from "../api/getMoviesBySearchParam";
 
-function useMovies(query: string) {
+function useMovies() {
   const target = useRef<any>(null);
-  const isMount = useRef(true);
 
-  const {
-    error,
-    movies,
-    fetchMovies,
-    isFetchingMovies,
-    page,
-    incrementPage,
-    totalResults,
-  } = useMovieReducer();
+  const { error, movies, isFetchingMovies, incrementPage, totalResults } =
+    useMovieReducer();
 
-  const callback: IntersectionObserverCallback = useCallback(
+  const observerCallback: IntersectionObserverCallback = useCallback(
     (entries) => {
       const [currentTarget] = entries;
       const isDone = totalResults <= movies.length;
@@ -31,28 +22,17 @@ function useMovies(query: string) {
   );
 
   useEffect(() => {
-    if (isMount.current || page === 1) {
-      return;
-    }
-    fetchMovies(() => getMoviesBySearchParam({ page, s: query }));
-  }, [fetchMovies, page, query]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(callback, { threshold: 1 });
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 1,
+    });
     if (target.current) {
       observer.observe(target.current);
     }
     return () => {
       observer.disconnect();
     };
-  }, [callback]);
+  }, [observerCallback]);
 
-  useEffect(() => {
-    isMount.current = false;
-    return () => {
-      isMount.current = true;
-    };
-  }, []);
   return { movies, error, target, isLoading: isFetchingMovies };
 }
 

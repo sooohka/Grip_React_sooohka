@@ -11,7 +11,7 @@ type Props = {
 
 function MovieModal(props: Props) {
   const { isOpen, handleClose, currentMovie, handleLeftBtnClick } = props;
-  if (!isOpen) {
+  if (!isOpen || !currentMovie) {
     return null;
   }
 
