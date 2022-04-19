@@ -2,7 +2,11 @@ import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
   colors: {
-    primary: "rgb(254,33,110)",
+    primary: {
+      light: "rgb(255,1,136)",
+      dark: "rgb(254,46,90)",
+      main: "rgb(254,33,110)",
+    },
     secondary: "rgb(18,18,18)",
     gray: {
       "50": "#F7FAFC",
@@ -22,13 +26,16 @@ const theme: DefaultTheme = {
   size: {
     app: {
       width: "40rem",
-      height: "100vh",
+      height: "90vh",
     },
     modal: {
-      width: "20rem",
+      width: "30rem",
       height: "15rem",
     },
     header: {
+      height: "7rem",
+    },
+    footer: {
       height: "7rem",
     },
   },

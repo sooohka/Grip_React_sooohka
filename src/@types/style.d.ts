@@ -3,7 +3,11 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      primary: string;
+      primary: {
+        main: string;
+        dark: string;
+        light: string;
+      };
       secondary: string;
       black: string;
       white: string;
@@ -30,6 +34,9 @@ declare module "styled-components" {
         height: string;
       };
       header: {
+        height: string;
+      };
+      footer: {
         height: string;
       };
     };

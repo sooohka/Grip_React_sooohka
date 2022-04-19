@@ -19,7 +19,7 @@ const OutLinedButton = styled(Button)`
 `;
 
 const ContainedButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 const S = { Button, OutLinedButton, ContainedButton };

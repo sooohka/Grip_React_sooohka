@@ -16,17 +16,18 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     height: 100%;
     flex-direction: column;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.gray[700]};
     font-size: 1.4rem;
     overflow: hidden;
   };
+  a,a:any-link{
+    color:inherit;
+    text-decoration: none;
+  }
 
   #root {
     flex: 1;
   }
-
-  #modal-root{
- }
 `;
 
 export default GlobalStyle;
