@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useMovieReducer from "../../../hooks/useMovieReducer";
+import sessionStorageApi from "../../../utils/sessionstorageApi";
 import getMoviesBySearchParam from "../api/getMoviesBySearchParam";
 
 function useMovieSearch(query: string, input: string) {
@@ -23,6 +24,10 @@ function useMovieSearch(query: string, input: string) {
     fetchMovies(() => getMoviesBySearchParam({ page, s: query }));
   }, [fetchMovies, page, query]);
 
+  useEffect(() => {
+    sessionStorageApi.saveState("search-query", query || "");
+  }, [query]);
+
   const handleSubmit = useCallback(
     async (e: any) => {
       e.preventDefault();
@@ -30,6 +35,7 @@ function useMovieSearch(query: string, input: string) {
       if (query === input) {
         window.location.reload();
       }
+      sessionStorageApi.saveState("search-query", input);
       navigate(`/search?s=${input}`);
     },
     [clearMovies, input, navigate, query]
