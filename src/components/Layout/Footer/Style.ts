@@ -21,7 +21,7 @@ const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-const IconButton = styled.button`
+const IconButton = styled.button<{ selected?: boolean }>`
   all: unset;
   width: 4rem;
   height: 4rem;
@@ -30,6 +30,8 @@ const IconButton = styled.button`
   border-radius: 50%;
   position: relative;
   transition: transform 1s ease-out;
+  color: ${({ selected, theme }) =>
+    selected ? theme.colors.primary.main : ""};
 
   :hover {
     background-color: rgba(255, 255, 255, 0.1);

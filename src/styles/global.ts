@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.gray[700]};
     font-size: 1.4rem;
     overflow: hidden;
+    color: ${({ theme }) => theme.colors.white};
   };
   a,a:any-link{
     color:inherit;

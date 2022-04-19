@@ -7,6 +7,7 @@ import SearchBar from "../../../components/SearchBar";
 import useMovieModal from "../hooks/useMovieModal";
 import useMovies from "../hooks/useMovies";
 import useMovieSearch from "../hooks/useMovieSearch";
+import S from "./Style";
 
 function Search() {
   const { search } = useLocation();
@@ -24,6 +25,7 @@ function Search() {
 
   return (
     <>
+      <S.h2>영화 검색</S.h2>
       <SearchBar
         handleSubmit={handleSubmit}
         input={input}
