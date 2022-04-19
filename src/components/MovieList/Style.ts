@@ -5,10 +5,9 @@ const MovieList = styled.ul`
   flex-direction: column;
   gap: 1rem;
   padding: 1.6rem;
-  height: ${({ theme }) => theme.size.app.height};
+  flex: 1;
   padding-bottom: 10rem;
   overflow-y: scroll;
-  padding-top: ${({ theme }) => theme.size.header.height};
 `;
 
 const FeedBack = styled.div`

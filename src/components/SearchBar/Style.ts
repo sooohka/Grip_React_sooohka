@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Container = styled.header`
-  position: fixed;
   width: ${({ theme }) => theme.size.app.width};
   height: ${({ theme }) => theme.size.header.height};
   padding: 1.6rem;
