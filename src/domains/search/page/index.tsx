@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Movie } from "../../../@types/movie";
 import Footer from "../../../components/Layout/Footer";
 import MovieList from "../../../components/MovieList";
 import SearchBar from "../../../components/SearchBar";
-import MovieModal from "../components/MovieModal";
 import useMovieModal from "../hooks/useMovieModal";
 import useMovies from "../hooks/useMovies";
 import useMovieSearch from "../hooks/useMovieSearch";
@@ -11,18 +11,16 @@ import useMovieSearch from "../hooks/useMovieSearch";
 function Search() {
   const { search } = useLocation();
   const query = useMemo(() => new URLSearchParams(search).get("s"), [search]);
-  const { movies, error, isLoading, target } = useMovies();
   const [input, setInput] = useState<string>(query || "");
   const { handleSubmit } = useMovieSearch(query || "", input);
 
-  const {
-    handleModalOpen,
-    handleModalClose,
-    handleLeftBtnClick,
-    isOpen,
-    currentMovie,
-    setCurrentMovie,
-  } = useMovieModal();
+  const { movies, error, isLoading, target } = useMovies();
+  const { handleModalOpen, setCurrentMovie, Modal } = useMovieModal();
+
+  const handleListItemClick = (movie: Movie) => () => {
+    setCurrentMovie(movie);
+    handleModalOpen();
+  };
 
   return (
     <>
@@ -33,16 +31,9 @@ function Search() {
       />
       <MovieList
         handleModalOpen={handleModalOpen}
-        setCurrentMovie={setCurrentMovie}
+        handleListItemClick={handleListItemClick}
         lastMovieItemEl={target}
-        MovieModal={
-          <MovieModal
-            isOpen={isOpen}
-            handleClose={handleModalClose}
-            handleLeftBtnClick={handleLeftBtnClick}
-            currentMovie={currentMovie!}
-          />
-        }
+        MovieModal={Modal}
         movies={movies}
         error={error}
         isLoading={isLoading}

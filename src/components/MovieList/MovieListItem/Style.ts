@@ -1,6 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import HeartSolid from "@heroicons/react/solid/HeartIcon";
+import HeartOutline from "@heroicons/react/outline/HeartIcon";
 
 const Container = styled.li`
+  position: relative;
   display: flex;
   gap: 2rem;
   height: 12rem;
@@ -27,6 +30,7 @@ const Img = styled.img`
 `;
 
 const InfoBox = styled.div`
+  position: relative;
   flex-grow: 1;
   display: flex;
   gap: 2rem;
@@ -34,10 +38,35 @@ const InfoBox = styled.div`
   padding: 1rem 0;
 `;
 
+const Icon = css`
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  color: ${({ theme }) => theme.colors.primary.main};
+`;
+
+const HeartSolidIcon = styled(HeartSolid)`
+  ${Icon}
+`;
+
+const HeartOutlineIcon = styled(HeartOutline)`
+  ${Icon}
+`;
+
 const Title = styled.h6``;
 
 const Category = styled.strong``;
 
-const S = { Container, InfoBox, Img, Title, Category };
+const S = {
+  Container,
+  InfoBox,
+  Img,
+  Title,
+  Category,
+  HeartOutlineIcon,
+  HeartSolidIcon,
+};
 
 export default S;

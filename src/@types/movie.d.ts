@@ -2,10 +2,8 @@ type Movie = {
   title: string;
   year: string;
   imdbID: string;
-  type: Type;
+  type: "game" | "movie" | "series";
   poster: string;
 };
-
-type Type = "game" | "movie" | "series";
 
 export type { Movie, Type };

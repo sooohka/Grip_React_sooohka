@@ -1,5 +1,6 @@
-import React, { forwardRef } from "react";
-import { Movie } from "../../../domains/search/types";
+import React, { forwardRef, useMemo } from "react";
+import { Movie } from "../../../@types/movie";
+import useFavoritesReducer from "../../../hooks/useFavoritesReducer";
 import S from "./Style";
 
 type Props = {
@@ -9,9 +10,15 @@ type Props = {
 
 const MovieListItem = forwardRef<HTMLLIElement, Props>((props, ref) => {
   const {
-    movie: { poster, title, type, year },
+    movie: { poster, title, type, year, imdbID },
     onClick,
   } = props;
+
+  const { favorites } = useFavoritesReducer();
+  const isFavorite = useMemo(
+    () => favorites.some((favorite) => imdbID === favorite.imdbID),
+    [favorites, imdbID]
+  );
 
   const handleKeyDown = (e: any) => {
     const { key } = e;
@@ -36,6 +43,7 @@ const MovieListItem = forwardRef<HTMLLIElement, Props>((props, ref) => {
         <S.Category>타입: {type}</S.Category>
         <b>연도: {year}</b>
       </S.InfoBox>
+      {isFavorite && <S.HeartSolidIcon />}
     </S.Container>
   );
 });

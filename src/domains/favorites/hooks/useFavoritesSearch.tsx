@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
+import { Movie } from "../../../@types/movie";
 import useDebounce from "../../../hooks/useDebounce";
 import useFavoritesReducer from "../../../hooks/useFavoritesReducer";
-import { Movie } from "../../search/types";
 
 function useFavoritesSearch(input: string) {
   const { favorites } = useFavoritesReducer();
@@ -17,7 +17,8 @@ function useFavoritesSearch(input: string) {
 
   useDebounce(getFavorites, 400);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
     getFavorites();
   };
 

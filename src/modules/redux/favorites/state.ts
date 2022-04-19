@@ -1,4 +1,4 @@
-import { Movie } from "../../../domains/search/types";
+import { Movie } from "../../../@types/movie";
 
 type FavoritesReducerState = {
   favorites: Movie[];

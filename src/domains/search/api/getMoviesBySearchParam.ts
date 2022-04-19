@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
+import { Movie } from "../../../@types/movie";
 import instances from "../../../modules/axios";
-import { Movie } from "../types";
 
 const { movieInstance } = instances;
 

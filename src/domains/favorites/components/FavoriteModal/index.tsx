@@ -1,6 +1,6 @@
 import React from "react";
+import { Movie } from "../../../../@types/movie";
 import Modal from "../../../../components/Modal";
-import { Movie } from "../../../search/types";
 
 type Props = {
   isOpen: boolean;

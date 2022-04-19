@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Movie } from "../../domains/search/types";
+import React from "react";
+import { Movie } from "../../@types/movie";
 import Spinner from "../Spinner";
 import MovieListItem from "./MovieListItem";
 import S from "./Style";
@@ -10,7 +10,7 @@ type Props = {
   isLoading?: boolean;
   lastMovieItemEl?: React.MutableRefObject<any>;
   MovieModal: React.ReactNode;
-  setCurrentMovie: (movie: Movie) => void;
+  handleListItemClick: (movie: Movie) => () => void;
   handleModalOpen: () => void;
 };
 
@@ -21,25 +21,15 @@ function MovieList(props: Props) {
     isLoading,
     lastMovieItemEl,
     MovieModal,
-    setCurrentMovie,
-    handleModalOpen,
+    handleListItemClick,
   } = props;
-
-  const handleItemClick = (movie: Movie) => () => {
-    setCurrentMovie(movie);
-    handleModalOpen();
-  };
-
-  useEffect(() => {
-    if (movies.length !== 0) setCurrentMovie(movies[0]);
-  }, [movies, setCurrentMovie]);
 
   if (error) {
     return <S.FeedBack>{error.message}</S.FeedBack>;
   }
 
-  if (movies.length === 0 && isLoading === false) {
-    return <S.FeedBack>검색 결과가 없어요😭</S.FeedBack>;
+  if (movies.length === 0 && !isLoading) {
+    return <S.FeedBack>결과가 없어요😭</S.FeedBack>;
   }
 
   return (
@@ -49,7 +39,7 @@ function MovieList(props: Props) {
       {movies.map((movie, i, a) => (
         <MovieListItem
           ref={a.length - 1 === i ? lastMovieItemEl : null}
-          onClick={handleItemClick(movie)}
+          onClick={handleListItemClick(movie)}
           key={movie.imdbID}
           movie={movie}
         />

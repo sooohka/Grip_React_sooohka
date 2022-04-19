@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { Movie } from "../../../@types/movie";
 import Footer from "../../../components/Layout/Footer";
 import MovieList from "../../../components/MovieList";
 import SearchBar from "../../../components/SearchBar";
-import FavoriteModal from "../components/FavoriteModal";
 import useFavoriteModal from "../hooks/useFavoriteModal";
 import useFavoritesSearch from "../hooks/useFavoritesSearch";
 
@@ -10,14 +10,12 @@ function Favorite() {
   const [input, setInput] = useState("");
   const { currentFavorites, handleSubmit } = useFavoritesSearch(input);
 
-  const {
-    isOpen,
-    handleModalOpen,
-    handleModalClose,
-    handleLeftBtnClick,
-    setCurrentMovie,
-    currentMovie,
-  } = useFavoriteModal();
+  const { Modal, handleModalOpen, setCurrentMovie } = useFavoriteModal();
+
+  const handleListItemClick = (movie: Movie) => () => {
+    setCurrentMovie(movie);
+    handleModalOpen();
+  };
 
   return (
     <>
@@ -28,15 +26,8 @@ function Favorite() {
       />
       <MovieList
         handleModalOpen={handleModalOpen}
-        setCurrentMovie={setCurrentMovie}
-        MovieModal={
-          <FavoriteModal
-            isOpen={isOpen}
-            handleClose={handleModalClose}
-            handleLeftBtnClick={handleLeftBtnClick}
-            currentMovie={currentMovie!}
-          />
-        }
+        handleListItemClick={handleListItemClick}
+        MovieModal={Modal}
         movies={currentFavorites}
       />
       <Footer />

@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 import S from "./Style";
 
 type Props = {
-  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+  handleSubmit: (e: any) => void;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 };

@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules/redux/store";
 import * as Actions from "../modules/redux/favorites/actions";
-import { Movie } from "../domains/search/types";
+import { Movie } from "../@types/movie";
 
 function useFavoritesReducer() {
   const { favorites } = useSelector(
