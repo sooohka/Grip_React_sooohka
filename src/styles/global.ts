@@ -23,6 +23,11 @@ const GlobalStyle = createGlobalStyle`
   a,a:any-link{
     color:inherit;
     text-decoration: none;
+    :focus-visible {
+    /*fire-fox */
+    outline: blue auto 2px;
+    outline: -webkit-focus-ring-color auto 1px;
+  }
   }
 
   #root {

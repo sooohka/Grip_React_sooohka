@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Footer from "../../../components/Layout/Footer";
 import MovieList from "../../../components/MovieList";
+import SearchBar from "../../../components/SearchBar";
 import MovieModal from "../components/MovieModal";
-import MovieSearchBar from "../components/MovieSearchBar";
 import useMovieModal from "../hooks/useMovieModal";
 import useMovies from "../hooks/useMovies";
 import useMovieSearch from "../hooks/useMovieSearch";
@@ -25,7 +26,7 @@ function Search() {
 
   return (
     <>
-      <MovieSearchBar
+      <SearchBar
         handleSubmit={handleSubmit}
         input={input}
         setInput={setInput}
@@ -46,6 +47,7 @@ function Search() {
         error={error}
         isLoading={isLoading}
       />
+      <Footer />
     </>
   );
 }

@@ -4,14 +4,13 @@ import SearchInput from "./SearchInput";
 import S from "./Style";
 
 type Props = {
-  ariaFormLabel: string;
   handleSubmit: React.FormEventHandler<HTMLFormElement>;
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
 };
 
 function SearchBar(props: Props) {
-  const { ariaFormLabel, handleSubmit, input, setInput } = props;
+  const { handleSubmit, input, setInput } = props;
 
   const clearInput = useCallback(() => {
     setInput("");
@@ -27,13 +26,13 @@ function SearchBar(props: Props) {
 
   return (
     <S.Container>
-      <S.Form aria-label={ariaFormLabel} onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit}>
         <SearchInput
           inputValue={input}
           handleXCircleButtonClick={clearInput}
           handleInputChange={handleInputChange}
         />
-        <Button type="submit" variant="outlined">
+        <Button aria-label="search" type="submit" variant="outlined">
           검색
         </Button>
       </S.Form>

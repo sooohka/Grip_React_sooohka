@@ -66,8 +66,8 @@ function ModalWrapper(props: Props) {
   );
 
   useEffect(() => {
-    firstButton.current.focus();
     document.addEventListener("keydown", keyEventListener);
+    firstButton.current.focus();
     return () => {
       document.removeEventListener("keydown", keyEventListener);
     };

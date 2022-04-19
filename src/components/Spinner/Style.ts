@@ -13,6 +13,7 @@ const Backdrop = styled.div`
   position: fixed;
   margin: 0 auto;
   width: ${({ theme }) => theme.size.app.width};
+  height: ${({ theme }) => theme.size.app.height};
   top: 0;
   left: 0;
   right: 0;

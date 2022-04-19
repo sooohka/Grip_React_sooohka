@@ -6,6 +6,8 @@ import movieReducer from "./movie/reducer";
 import favoritesReducer from "./favorites/reducer";
 import localStorageApi from "../../utils/localstorageApi";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const preloadedFavoriteState = localStorageApi.getState("favorites");
 
 const reduxStore = createStore(
@@ -14,7 +16,9 @@ const reduxStore = createStore(
     favoritesReducer,
   }),
   { favoritesReducer: preloadedFavoriteState },
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  isDev
+    ? composeWithDevTools(applyMiddleware(thunk, logger))
+    : applyMiddleware(thunk)
 );
 
 type RootState = ReturnType<typeof reduxStore.getState>;

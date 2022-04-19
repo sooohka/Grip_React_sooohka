@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Footer from "../../../components/Layout/Footer";
 import MovieList from "../../../components/MovieList";
+import SearchBar from "../../../components/SearchBar";
 import FavoriteModal from "../components/FavoriteModal";
-import FavoritesSearchBar from "../components/FavoritesSearchBar";
 import useFavoriteModal from "../hooks/useFavoriteModal";
 import useFavoritesSearch from "../hooks/useFavoritesSearch";
 
@@ -20,7 +21,7 @@ function Favorite() {
 
   return (
     <>
-      <FavoritesSearchBar
+      <SearchBar
         handleSubmit={handleSubmit}
         input={input}
         setInput={setInput}
@@ -38,6 +39,7 @@ function Favorite() {
         }
         movies={currentFavorites}
       />
+      <Footer />
     </>
   );
 }

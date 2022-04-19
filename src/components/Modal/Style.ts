@@ -9,14 +9,16 @@ const Container = styled.dialog`
   position: absolute;
   top: 50%;
   left: 50%;
+  padding: 1.4rem;
   transform: translate(-50%, -50%);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
-const Header = styled.div`
+const Header = styled.header`
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,8 +47,8 @@ const CloseButton = styled.button`
   }
   :focus-visible {
     /*fire-fox */
-    outline: blue auto 1px;
-    outline: -webkit-focus-ring-color auto 1px;
+    outline: 2px auto blue;
+    outline: 2px auto -webkit-focus-ring-color;
   }
 `;
 
@@ -56,7 +58,7 @@ const CloseIcon = styled(XIcon)`
   stroke-width: 2.5px;
 `;
 
-const Content = styled.div`
+const Content = styled.article`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -77,8 +79,8 @@ const ButtonBox = styled.div`
 
 const Button = styled.button`
   all: unset;
-  width: 6rem;
-  height: 2.5rem;
+  width: 8rem;
+  height: 3rem;
   border-radius: 3px;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px rgba(1, 1, 1, 0.1);
@@ -90,15 +92,19 @@ const Button = styled.button`
   :hover {
     filter: brightness(0.8);
   }
+  :focus,
   :focus-visible {
     /*fire-fox */
-    outline: blue auto 1px;
-    outline: -webkit-focus-ring-color auto 1px;
+    outline: 2px;
+    outline-color: blue;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-offset: -2px;
   }
 `;
 
 const LeftButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 const RightButton = styled(Button)`

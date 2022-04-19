@@ -36,8 +36,8 @@ const IconButton = styled.button`
   }
   :focus-visible {
     /*fire-fox */
-    outline: blue auto 2px;
-    outline: -webkit-focus-ring-color auto 1px;
+    outline: 2px auto blue;
+    outline: 2px auto -webkit-focus-ring-color;
   }
   ::after {
     content: "";
